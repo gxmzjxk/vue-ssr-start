@@ -1,14 +1,29 @@
 import { createApp } from './app'
 
+const isDev = process.env.NODE_ENV !== 'production'
+
+// This exported function will be called by `bundleRenderer`.
+// This is where we perform data-prefetching to determine the
+// state of our application before actually rendering it.
+// Since data fetching is async, this function is expected to
+// return a Promise that resolves to the app instance.
 export default context => {
     // 因为可能会是异步路由钩子函数或组件，所以这里返回一个 Promise，
     // 以便于服务器能够在渲染前，所有内容已经准备就绪。
-
     return new Promise((resolve, reject) => {
+        const s = isDev && Date.now()
         const { app, router } = createApp();
 
+        const { url } = context
+        // https://router.vuejs.org/zh/api/#router-resolve
+        const { fullPath } = router.resolve(url).route
+
+        if (fullPath !== url) {
+            return reject({ url: fullPath })
+        }
+
         // 设置 Server 端 router 的位置
-        router.push(context.url)
+        router.push(url)
 
         // 等到 router 将可能的异步组件和钩子函数解析完
         router.onReady(() => {
@@ -26,6 +41,7 @@ export default context => {
                     })
                 }
             })).then(() => {
+                isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
                 // 在所有预取钩子(preFetch hook) resolve 后，
                 // 我们的 store 现在已经填充入渲染应用程序所需的状态。
                 // 当我们将状态附加到上下文，
@@ -36,6 +52,5 @@ export default context => {
                 resolve(app)
             }).catch(reject)
         }, reject)
-    }, reject)
-})
+    })
 }
