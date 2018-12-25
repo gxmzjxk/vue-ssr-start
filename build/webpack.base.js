@@ -49,16 +49,7 @@ module.exports = {
               {
                 test: /\.less?$/,
                 use: isProd
-                  ? ExtractTextPlugin.extract({
-                      use: [
-                        {
-                          loader: 'css-loader',
-                          options: { minimize: true }
-                        },
-                        'less-loader'
-                      ],
-                      fallback: 'vue-style-loader'
-                    })
+                  ? ['vue-style-loader', 'css-loader', 'less-loader']
                   : ['vue-style-loader', 'css-loader', 'less-loader']
               },
         ]
@@ -70,9 +61,6 @@ module.exports = {
     plugins: isProd
         ? [
             new VueLoaderPlugin(),
-            new webpack.optimize.UglifyJsPlugin({
-                compress: { warnings: false }
-            }),
             new webpack.optimize.ModuleConcatenationPlugin(),
             // new ExtractTextPlugin({
             //   filename: 'common.[chunkhash].css'
