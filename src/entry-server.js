@@ -12,7 +12,7 @@ export default context => {
     // 以便于服务器能够在渲染前，所有内容已经准备就绪。
     return new Promise((resolve, reject) => {
         const s = isDev && Date.now()
-        const { app, router } = createApp();
+        const { app, router, store } = createApp();
 
         const { url } = context
         // https://router.vuejs.org/zh/api/#router-resolve

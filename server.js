@@ -19,7 +19,7 @@ const app = express()
 
 function createRenderer(bundle, options) {
   return createBundleRenderer(bundle, Object.assign(options, {
-    cache: LRU({
+    cache: new LRU({
       max: 1000,
       maxAge: 1000 * 60 * 15
     }),

@@ -7,6 +7,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+    mode: isProd ? 'production' : 'development',
     devtool: isProd
         ? false
         : '#cheap-module-source-map',
