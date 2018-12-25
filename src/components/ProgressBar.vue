@@ -89,7 +89,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="less" scoped>
 .progress {
     position: fixed;
     top: 0px;

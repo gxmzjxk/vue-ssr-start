@@ -45,21 +45,21 @@ module.exports = {
                     name: '[name].[ext]?[hash]'
                 }
             },
-            //   {
-            //     test: /\.styl(us)?$/,
-            //     use: isProd
-            //       ? ExtractTextPlugin.extract({
-            //           use: [
-            //             {
-            //               loader: 'css-loader',
-            //               options: { minimize: true }
-            //             },
-            //             'stylus-loader'
-            //           ],
-            //           fallback: 'vue-style-loader'
-            //         })
-            //       : ['vue-style-loader', 'css-loader', 'stylus-loader']
-            //   },
+              {
+                test: /\.less?$/,
+                use: isProd
+                  ? ExtractTextPlugin.extract({
+                      use: [
+                        {
+                          loader: 'css-loader',
+                          options: { minimize: true }
+                        },
+                        'less-loader'
+                      ],
+                      fallback: 'vue-style-loader'
+                    })
+                  : ['vue-style-loader', 'css-loader', 'less-loader']
+              },
         ]
     },
     performance: {
