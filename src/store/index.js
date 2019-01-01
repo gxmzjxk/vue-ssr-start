@@ -1,21 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import SportsHome from './modules/sports-home'
 
 Vue.use(Vuex)
 
 export function createStore() {
     return new Vuex.Store({
-        state: {
-            navs: ['英超', '西甲', '意甲']
-        },
-        actions: {
-
-        },
-        mutations: {
-
-        },
-        getters: {
-
+        strict: process.env.NODE_ENV !== 'production',
+        modules: {
+            SportsHome
         }
     })
 }

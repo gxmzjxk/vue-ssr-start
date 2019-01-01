@@ -1,5 +1,5 @@
 import { STORE_KEY } from '@/constant';
-import JStorage from '@/_utils/jstorage';
+import JStorage from '@/util/jstorage';
 function toNumber(value) {
     return Number(value);
 }
@@ -57,11 +57,12 @@ export default {
         return res;
     },
     isTestEnvironment() {
-        let clientHost = window.location.host;
-        if (clientHost === 'm.sohu.com' || clientHost === 't3.m.sohu.com') {
-            return false;
+        const isClient = typeof window !== 'undefined';
+        if (isClient) {
+            let clientHost = window.location.host;
+            return clientHost !== 'm.sohu.com' && clientHost !== 't3.m.sohu.com';
         } else {
-            return true;
+            return process.env.RUNNING_ENV !== 'bx' && process.env.RUNNING_ENV !== 'yz';
         }
     },
     isEmpty: function (obj) {
@@ -287,14 +288,14 @@ export default {
     clone: function (obj) {
         // Handle the 3 simple types, and null or undefined
         if (obj === null || typeof obj !== 'object') return obj;
-    
+
         // Handle Date
         if (obj instanceof Date) {
             const copy = new Date();
             copy.setTime(obj.getTime());
             return copy;
         }
-    
+
         // Handle Array
         if (obj instanceof Array) {
             const copy = [];
@@ -304,7 +305,7 @@ export default {
             }
             return copy;
         }
-    
+
         // Handle Object
         const copy = {};
         for (const attr in obj) {

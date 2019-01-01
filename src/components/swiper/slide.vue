@@ -14,7 +14,7 @@ export default {
     }
 };
 </script>
-<style>
+<style lang="less">
 .wh_slide {
     width: 100%;
     -ms-flex-negative: 0;

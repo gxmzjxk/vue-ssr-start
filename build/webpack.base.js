@@ -7,20 +7,25 @@ const { VueLoaderPlugin } = require('vue-loader')
 
 const isProd = process.env.NODE_ENV === 'production'
 
+function resolve(dir){
+	return path.join(__dirname, '..', dir);
+}
+
 module.exports = {
     mode: isProd ? 'production' : 'development',
     devtool: isProd
         ? false
         : '#cheap-module-source-map',
     output: {
-        path: path.resolve(__dirname, '../dist'),
+        path: resolve('dist'),
         publicPath: '/dist/',
         filename: '[name].[chunkhash].js'
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            'public': path.resolve(__dirname, '../public')
+            '@': resolve('src'),
+            'public': resolve('public')
         }
     },
     module: {

@@ -17,8 +17,8 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 import { Swiper, Slide } from '@/components/swiper';
-import Request from '@/util/preq';
 import { formatFeedList } from '@/util/format/feed';
 // import adFocus from '@/ad/pages/ad-focus';
 export default {
@@ -28,42 +28,13 @@ export default {
             type: Object
         }
     },
-    data() {
-        return {
-            preFocus: [],
-        };
-    },
-    methods: {
-        getData() {
-            let sReq = new Request();
-            sReq.fetch({
-                url: '//v2.sohu.com/integration-api/pure/feedByRegion/5137'
-            }).then((res) => {
-                if (res && Array.isArray(res.data)) {
-                    this.preFocus = res.data;
-                    this.$nextTick(() => {
-                        this.loadAd();
-                    });
-                }
-            });
-        },
-        loadAd() {
-            // adFocus.focusMap({
-            //     adData: this.ad,
-            //     container: this.$el,
-            // });
-        }
-    },
-    created() {
-        this.getData();
-    },
     components: {
         Swiper,
         Slide
     },
     computed: {
         focusList() {
-            return formatFeedList(this.preFocus);
+            return this.$store.getters.focus;
         }
     }
 
