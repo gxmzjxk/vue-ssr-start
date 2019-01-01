@@ -4,6 +4,7 @@
         <s-nav></s-nav>
         <s-focus></s-focus>
         <recommend-live></recommend-live>
+        <!-- <section-plate :config="config.toutiao" type="toutiao" :feedFormatType="1"></section-plate> -->
     </div>
 </template>
 <script>
@@ -11,6 +12,7 @@ import SHeader from './SHeader';
 import SNav from './SNav';
 import SFocus from './SFocus';
 import RecommendLive from './RecommendLive';
+// import SectionPlate from './SectionPlate';
 export default {
     asyncData({ store }) {
         return Promise.all([
@@ -22,7 +24,8 @@ export default {
         SHeader,
         SNav,
         SFocus,
-        RecommendLive
+        RecommendLive,
+        // SectionPlate
     }
 }
 </script>
