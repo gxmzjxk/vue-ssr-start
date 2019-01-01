@@ -9,7 +9,22 @@ export function createRouter() {
         fallback: false,
         scrollBehavior: () => ({ y: 0 }),
         routes: [
-            { path: '/', component: () => import('../views/Home.vue')}
+            {
+                path: '/z/', component: () => import('../views/sports/index.vue'),
+                children: [
+                    {
+                        path: '/', component: () => import('../views/sports/home/Page.vue'),
+                    }
+                ]
+            },
+            {
+                path: '/live/', component: () => import('../views/zhibo/index.vue'),
+                children: [
+                    {
+                        path: '/', component: () => import('../views/zhibo/item/page.vue'),
+                    }
+                ]
+            }
         ]
     })
 }

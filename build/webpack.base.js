@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+// 这个插件是必须的！ 它的职责是将你定义过的其它规则复制并应用到 .vue 文件里相应语言的块。例如，如果你有一条匹配 /\.js$/ 的规则，那么它会应用到 .vue 文件里的 <script> 块
 const { VueLoaderPlugin } = require('vue-loader')
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -17,6 +18,7 @@ module.exports = {
         filename: '[name].[chunkhash].js'
     },
     resolve: {
+        extensions: ['.js', '.vue', '.json'],
         alias: {
             'public': path.resolve(__dirname, '../public')
         }
@@ -48,9 +50,42 @@ module.exports = {
             },
               {
                 test: /\.less?$/,
-                use: isProd
-                  ? ['vue-style-loader', 'css-loader', 'less-loader']
-                  : ['vue-style-loader', 'css-loader', 'less-loader']
+                use: [
+                    {
+                        loader: 'vue-style-loader'
+                    },
+                    {
+                        loader: 'css-loader?importLoaders=1',
+                        options: {}
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [require('autoprefixer')({
+                                browsers: ['Android >= 4.0', 'IOS >= 6.0', 'last 2 versions']
+                            })],
+                        }
+                    },
+                    {
+                        loader: 'px2rem-loader',
+                        options: {
+                            remUnit: 37.5,
+                            baseDpr: 1
+                        }
+                    },
+                    {
+                        loader: 'less-loader',
+                        options: {}
+                    },
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: [
+                                path.resolve(__dirname, '../src/assets/style/global.less'),
+                            ]
+                        }
+                    }
+                ]
               },
         ]
     },

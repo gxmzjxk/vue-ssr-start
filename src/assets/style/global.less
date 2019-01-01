@@ -1,0 +1,17 @@
+.ellipsis {
+    line-height: 1.05em; //为了防止文字被裁切
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.line-clamp(@clamp: 2) {
+    line-height: 1.175em; // 还是为了文字被裁切，行高最少 1.175em
+    -webkit-line-clamp: @clamp;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+}

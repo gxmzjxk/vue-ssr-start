@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div class="zhibo-app">
         <transition
             name="fade"
             mode="out-in">
@@ -7,7 +7,13 @@
         </transition>
     </div>
 </template>
+<script>
+export default {
 
+}
+</script>
 <style lang="less">
-@import './assets/style/base.less';
+.zhibo-app {
+    position: relative;
+}
 </style>

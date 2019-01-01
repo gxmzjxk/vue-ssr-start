@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div class="sports-app">
         <transition
             name="fade"
             mode="out-in">
@@ -7,7 +7,15 @@
         </transition>
     </div>
 </template>
+<script>
+export default {
 
+}
+</script>
 <style lang="less">
-@import './assets/style/base.less';
+.sports-app {
+    position: relative;
+}
 </style>
+
+
