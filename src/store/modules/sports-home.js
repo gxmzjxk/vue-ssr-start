@@ -5,7 +5,14 @@ const sReq = new Request();
 
 export default {
     state: {
-        focus: []
+        // 焦点图
+        focus: [],
+        // 直播
+        live: {
+            living: 0,
+            total: 0,
+            recommand: []
+        },
     },
     getters: {
         focus: state => {
@@ -16,6 +23,9 @@ export default {
     mutations: {
         SET_FOCUS(state, { focus }) {
             state.focus = focus;
+        },
+        SET_RECOMMEND_LIVE(state, { live }) {
+            state.live = live;
         }
     },
     actions: {
@@ -26,8 +36,16 @@ export default {
                 commit('SET_FOCUS', {
                     focus: res.data
                 });
-            })
-
+            });
+        },
+        FETCH_RECOMMEND_LIVE({ commit }) {
+            return sReq.fetch({
+                url: 'http://10.16.58.119:8081/sports-api/v2/zhibo/recommand'
+            }).then(res => {
+                commit('SET_RECOMMEND_LIVE', {
+                    live: res
+                });
+            });
         }
     }
 }
