@@ -1,7 +1,7 @@
-import Moment from '@/util/moment';
-import JStorage from '@/util/jstorage';
-import Util from '@/util/util';
-import Request from '@/util/preq';
+import Moment from '@/_utils/moment';
+import JStorage from '@/_utils/jstorage';
+import Util from '@/_utils/util';
+import Request from '@/_utils/preq';
 import { TAGS, AUTHOR_CHANNEL_DIC } from '@/constant';
 
 // feed 流缓存到 sessionStorage 的时间
@@ -43,6 +43,7 @@ const genFeedShowType = function(o = {}) {
  *
  * @param {Array} _list 数据流
  * @param {Number} genType 0 默认， 1体育头条
+ * @param {*}
  */
 export const formatFeedList = function (_list, genType = 0) {
     let nowTime, showTime, list = [];
@@ -71,6 +72,7 @@ export const formatFeedList = function (_list, genType = 0) {
                 o.channelTag = AUTHOR_CHANNEL_DIC[o.authorId].channel;
             }
             o.uniqueKey = o.id + o.scm;
+            o.pullTime = o.pullTime || 1;
             return o;
         });
     }

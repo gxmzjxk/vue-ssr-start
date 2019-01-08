@@ -1,6 +1,6 @@
 <template>
     <div class="sports-focus">
-        <swiper v-if="focusList.length > 0" duration="500" interval="3000" :autoPlay="false">
+        <swiper v-if="focusList.length > 0" duration="500" interval="3000" autoPlay="3000">
             <template v-for="(item, index) in focusList">
                 <slide :key="index">
                     <a :href="item.link">
@@ -17,25 +17,34 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import { Swiper, Slide } from '@/components/swiper';
-import { formatFeedList } from '@/util/format/feed';
-// import adFocus from '@/ad/pages/ad-focus';
+import { formatFeedList } from '@/_utils/format/feed';
 export default {
-    props: {
-        ad: {
-            default: () => ({}),
-            type: Object
-        }
+    data() {
+        return {
+
+        };
+    },
+    methods: {
+
+    },
+    mounted() {
+        const adSportsHome = require('@/ad/sports-home').default;
+        this.$nextTick(() => {
+            adSportsHome.focusMap({
+                container: this.$el
+            });
+        });
     },
     components: {
         Swiper,
         Slide
     },
     computed: {
-        focusList() {
-            return this.$store.getters.focus;
-        }
+        ...mapState({
+            focusList: state => state.SportsHome.focus
+        })
     }
 
 };

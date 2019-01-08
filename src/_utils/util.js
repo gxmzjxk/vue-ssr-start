@@ -1,5 +1,5 @@
 import { STORE_KEY } from '@/constant';
-import JStorage from '@/util/jstorage';
+import JStorage from '@/_utils/jstorage';
 function toNumber(value) {
     return Number(value);
 }

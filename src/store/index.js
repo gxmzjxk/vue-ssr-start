@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import SportsHome from './modules/sports-home'
 
+import getters from './getters'
+
 Vue.use(Vuex)
 
 export function createStore() {
@@ -9,6 +11,7 @@ export function createStore() {
         strict: process.env.NODE_ENV !== 'production',
         modules: {
             SportsHome
-        }
+        },
+        getters
     })
 }

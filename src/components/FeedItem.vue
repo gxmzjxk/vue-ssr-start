@@ -26,13 +26,13 @@
                     <div class="time" :data-news_id="feed.id"></div>
                 </div>
             </div>
-            <div class="onePic_img" v-lazy:background-image="feed.picUrl"></div>
+            <div class="onePic_img" :style="`background-image: url(${feed.picUrl})`"></div>
         </a>
         <a v-else-if="feed.showType === 2" class="threePics" :href="feed.link" data-spm-type="content">
             <h3 class="title" v-html="feed.title"></h3>
             <div class="pics-list">
                 <template v-for="(item, index) in feed.images">
-                    <div class="pic-wrap" :key="index" v-lazy:background-image="item"></div>
+                    <div class="pic-wrap" :key="index" :style="`background-image: url(${item})`"></div>
                 </template>
             </div>
             <div class="item_info">
@@ -43,7 +43,7 @@
         </a>
         <a v-else-if="feed.showType === 3" class="bigVideo" :href="feed.link" data-spm-type="content">
             <h3 class="title" v-html="feed.title"></h3>
-            <div class="poster" v-lazy:background-image="feed.picUrl">
+            <div class="poster" :style="`background-image: url(${feed.picUrl})`">
                 <img class="play-ico" src="../assets/images/ic_play_b.png"/>
             </div>
             <footer class="item_info">
@@ -59,10 +59,12 @@ import JStorage from '@/_utils/jstorage';
 import { STORE_KEY } from '@/constant';
 export default {
     props: {
-        feed: {},
-        pulltime: {
-            default: 1
-        }
+        feed: {
+            default: () => ({
+                pullTime: 1
+            }),
+            type: Object
+        },
     },
     methods: {
         jump2FeedBack() {
@@ -112,14 +114,9 @@ export default {
     }
     // 基础样式 start
     .title {
+        .line-clamp(2);
         font-size: 18px; /*no*/
         line-height: 1.4em; /*25px*/
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        display: box;
-        -webkit-box-orient: vertical;
         color: #212121;
     }
     .item_info {
@@ -155,12 +152,9 @@ export default {
             }
         }
         .name {
+            .ellipsis;
             float: left;
             max-width: 10em;
-            line-height: 1.05em;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
         .time {
             float: left;
@@ -271,7 +265,7 @@ export default {
             }
         }
         .item_info {
-            margin-top: 6px;
+            margin-top: 8.5px;
             margin-bottom: 12px;
         }
     }

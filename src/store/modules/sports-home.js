@@ -1,6 +1,6 @@
-import Request from '@/util/preq';
-import { formatFeedList } from '@/util/format/feed';
-import Util from '@/util/util';
+import Request from '@/_utils/preq';
+import { formatFeedList } from '@/_utils/format/feed';
+import Util from '@/_utils/util';
 const sReq = new Request();
 
 export default {
@@ -13,12 +13,8 @@ export default {
             total: 0,
             recommand: []
         },
-    },
-    getters: {
-        focus: state => {
-            let focus = Util.clone(state.focus);
-            return formatFeedList(focus);
-        }
+        // 头条 feed 流
+        toutiaoNews: []
     },
     mutations: {
         SET_FOCUS(state, { focus }) {
@@ -26,6 +22,9 @@ export default {
         },
         SET_RECOMMEND_LIVE(state, { live }) {
             state.live = live;
+        },
+        SET_TOUTIAO_NEWS(state, { news }) {
+            state.toutiaoNews = news;
         }
     },
     actions: {
@@ -33,8 +32,9 @@ export default {
             return sReq.fetch({
                 url: 'https://v2.sohu.com/integration-api/pure/feedByRegion/5137'
             }).then(res => {
+                let focus = formatFeedList(res.data);
                 commit('SET_FOCUS', {
-                    focus: res.data
+                    focus: focus
                 });
             });
         },
@@ -44,6 +44,16 @@ export default {
             }).then(res => {
                 commit('SET_RECOMMEND_LIVE', {
                     live: res
+                });
+            });
+        },
+        FETCH_TOUTIAO_NEWS({ commit }) {
+            return sReq.fetch({
+                url: 'https://v2.sohu.com/integration-api/pure/feedByRegion/5138'
+            }).then(res => {
+                let toutiaoNews = formatFeedList(res.data);
+                commit('SET_TOUTIAO_NEWS', {
+                    news: toutiaoNews
                 });
             });
         }

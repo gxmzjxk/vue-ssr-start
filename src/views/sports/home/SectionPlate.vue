@@ -11,25 +11,23 @@
             </ul>
         </header>
         <div class="news-wrap">
-            <template v-if="type === 'toutiao'">
-                <feed-list :inject="inject" :api="config.feed.api" :params="config.feed.params" :limitOnePage="limitOnePage" :name="type" :formatType="feedFormatType"></feed-list>
-            </template>
-            <template v-else>
-                <feed-list :api="config.feed.api" :params="config.feed.params" :limitOnePage="limitOnePage" :name="type" :formatType="feedFormatType"></feed-list>
-            </template>
+            <!-- <template v-if="type === 'toutiao'"> -->
+                <!-- <feed-list :inject="inject" :api="config.feed.api" :params="config.feed.params" :limitOnePage="limitOnePage" name="toutiao" formatType="1"></feed-list> -->
+            <!-- </template> -->
+            <!-- <template v-else> -->
+                <!-- <feed-list :api="config.feed.api" :params="config.feed.params" :limitOnePage="limitOnePage" :name="type"></feed-list> -->
+            <!-- </template> -->
         </div>
     </div>
 </template>
 <script>
 import FeedList from '@/components/FeedList';
-import { scrollGetPos, replaceFixedMenu } from './sticky-helper';
-import adIndex from '@/ad/pages/ad-index';
-import TeamsSection from '../TeamsSection';
+// import { scrollGetPos, replaceFixedMenu } from './sticky-helper';
+import TeamsSection from './TeamsSection';
 export default {
     props: {
         config: {
             default: () => ({
-                ad: [],
                 label: {},
                 plugin: [],
                 feed: {}
@@ -87,23 +85,18 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
-            this.addMenuHandler();
-            // 加载广告
-            adIndex.plateBottom({
-                container: this.$el,
-                adData: this.config.ad
-            });
+            // this.addMenuHandler();
         });
     },
     components: {
         FeedList
     },
     computed: {
-        sectionMenus() {
-            let curItem = Object.assign({}, this.config.label);
-            curItem.active = true;
-            return Array.prototype.concat.call(curItem, this.config.plugin);
-        }
+        // sectionMenus() {
+        //     let curItem = Object.assign({}, this.config.label);
+        //     curItem.active = true;
+        //     return Array.prototype.concat.call(curItem, this.config.plugin);
+        // }
     }
 };
 </script>

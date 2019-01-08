@@ -14,7 +14,7 @@ export function createApp() {
     const store = createStore()
 
     sync(store, router)
-    
+
     const app = new Vue({
         // 注入 router 到根 Vue 实例
         router,

@@ -2,6 +2,7 @@
 // 自动嵌入到最终的 HTML 中
 import Vue from 'vue'
 import 'es6-promise/auto'
+import './assets/fonts/siconfont'
 import { createApp } from './app'
 import ProgressBar from './components/ProgressBar.vue'
 
@@ -54,7 +55,7 @@ router.onReady(() => {
         if (!asyncDataHooks.length) {
             return next()
         }
-        
+
         // 加载指示器(loading indicator)
         bar.start()
         Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
