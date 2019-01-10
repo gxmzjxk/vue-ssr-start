@@ -32,6 +32,10 @@
 1. 构建出分目录的静态 `js/images`，更利于维护
 2. 使用 `webpack` 推荐配置 `optimization` 抽离公共代码
 
+#### ESlint
+1. 解决过IE8的BUG，听闻过无分号可能压缩导致的BUG，其他变成语言对分号的认同，还是把分号引入ESlint
+……
+
 #### 其他
 1. 支持最新的 `Node.js`, `webpack@4`, `ES6`, `部分 ES7`
 2. `HTTPS` 下现代浏览器支持 `Service Worker`
