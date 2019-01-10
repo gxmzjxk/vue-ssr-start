@@ -19,7 +19,6 @@
 <script>
 import { mapState } from 'vuex';
 import { Swiper, Slide } from '@/components/swiper';
-import { formatFeedList } from '@/_utils/format/feed';
 export default {
     data() {
         return {

@@ -21,7 +21,7 @@
     </div>
 </template>
 <script>
-import FeedList from '@/components/FeedList';
+// import FeedList from '@/components/FeedList';
 // import { scrollGetPos, replaceFixedMenu } from './sticky-helper';
 import TeamsSection from './TeamsSection';
 export default {
@@ -63,25 +63,25 @@ export default {
         };
     },
     methods: {
-        addMenuHandler() {
-            const MENU_HEIGHT = this.$refs.menu.getBoundingClientRect().height;
-            const DELTA = MENU_HEIGHT - this.fixedMenuHeight;
-            scrollGetPos({
-                dom: this.$el,
-                cb: (pos) => {
-                    if (pos.top === 0 && pos.bottom === 0) {
-                        console.warn('scroll listener is pending');
-                    } else {
-                        // console.log('top:' + pos.top + '|bottom:' + pos.bottom + '|height:' + pos.height);
-                        if (pos.top <= DELTA && pos.bottom > DELTA) {
-                            replaceFixedMenu(this.sectionMenus, true);
-                        } else if (this.type === 'toutiao' && pos.top > DELTA) {
-                            this.$bus.$emit('fm_hide');
-                        }
-                    }
-                }
-            });
-        }
+        // addMenuHandler() {
+        //     const MENU_HEIGHT = this.$refs.menu.getBoundingClientRect().height;
+        //     const DELTA = MENU_HEIGHT - this.fixedMenuHeight;
+        //     scrollGetPos({
+        //         dom: this.$el,
+        //         cb: (pos) => {
+        //             if (pos.top === 0 && pos.bottom === 0) {
+        //                 console.warn('scroll listener is pending');
+        //             } else {
+        //                 // console.log('top:' + pos.top + '|bottom:' + pos.bottom + '|height:' + pos.height);
+        //                 if (pos.top <= DELTA && pos.bottom > DELTA) {
+        //                     replaceFixedMenu(this.sectionMenus, true);
+        //                 } else if (this.type === 'toutiao' && pos.top > DELTA) {
+        //                     this.$bus.$emit('fm_hide');
+        //                 }
+        //             }
+        //         }
+        //     });
+        // }
     },
     mounted() {
         this.$nextTick(() => {
@@ -89,7 +89,7 @@ export default {
         });
     },
     components: {
-        FeedList
+        // FeedList
     },
     computed: {
         // sectionMenus() {

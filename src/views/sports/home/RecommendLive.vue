@@ -26,7 +26,6 @@
     </div>
 </template>
 <script>
-import Request from '@/_utils/preq';
 import Moment from '@/_utils/moment';
 import Util from '@/_utils/util';
 export default {

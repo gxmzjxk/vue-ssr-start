@@ -15,23 +15,23 @@ export default [
         teamname: '欧美男足'
     },
     {
-        teamname: "冰雪",
-        flag: "//statics.itc.cn/sports/icon/snowsports.png",
-        link: "/z/snowsports"
+        teamname: '冰雪',
+        flag: '//statics.itc.cn/sports/icon/snowsports.png',
+        link: '/z/snowsports'
     },
     {
-        teamname: "女足",
-        flag: "//statics.itc.cn/sports/icon/womenfootball.png",
-        link: "/z/womenfootball"
+        teamname: '女足',
+        flag: '//statics.itc.cn/sports/icon/womenfootball.png',
+        link: '/z/womenfootball'
     },
     {
-        teamname: "羽毛球",
-        flag: "//statics.itc.cn/sports/icon/badminton.png",
-        link: "/z/badminton"
+        teamname: '羽毛球',
+        flag: '//statics.itc.cn/sports/icon/badminton.png',
+        link: '/z/badminton'
     },
     {
-        teamname: "创业",
-        flag: "//statics.itc.cn/sports/icon/business.png",
-        link: "/z/business"
+        teamname: '创业',
+        flag: '//statics.itc.cn/sports/icon/business.png',
+        link: '/z/business'
     }
 ];

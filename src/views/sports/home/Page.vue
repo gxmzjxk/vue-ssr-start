@@ -28,7 +28,7 @@ export default {
         RecommendLive,
         PlateToutiao
     }
-}
+};
 </script>
 <style lang="less">
 

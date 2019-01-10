@@ -1,6 +1,6 @@
 import Request from '@/_utils/preq';
 import { formatFeedList } from '@/_utils/format/feed';
-import Util from '@/_utils/util';
+// import Util from '@/_utils/util';
 const sReq = new Request();
 
 export default {
@@ -58,4 +58,4 @@ export default {
             });
         }
     }
-}
+};

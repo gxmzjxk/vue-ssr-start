@@ -16,76 +16,76 @@ export default {
         return {
             navs: [
                 {
-                    link: "/z/nba",
-                    title: "NBA"
+                    link: '/z/nba',
+                    title: 'NBA'
                 },
                 {
-                    link: "/z/csl",
-                    title: "中超"
+                    link: '/z/csl',
+                    title: '中超'
                 },
                 {
-                    link: "/z/afccl",
-                    title: "亚冠"
+                    link: '/z/afccl',
+                    title: '亚冠'
                 },
                 {
-                    link: "/z/cnmenfootball",
-                    title: "国足"
+                    link: '/z/cnmenfootball',
+                    title: '国足'
                 },
                 {
-                    link: "/z/womenfootball",
-                    title: "女足"
+                    link: '/z/womenfootball',
+                    title: '女足'
                 },
                 {
-                    link: "/z/live",
-                    title: "直播"
+                    link: '/z/live',
+                    title: '直播'
                 },
                 {
-                    link: "/z/football/cba",
-                    title: "CBA"
+                    link: '/z/football/cba',
+                    title: 'CBA'
                 },
                 {
-                    link: "/z/football/7",
-                    title: "欧冠"
+                    link: '/z/football/7',
+                    title: '欧冠'
                 },
                 {
-                    link: "/z/football/17",
-                    title: "英超"
+                    link: '/z/football/17',
+                    title: '英超'
                 },
                 {
-                    link: "/z/football/8",
-                    title: "西甲"
+                    link: '/z/football/8',
+                    title: '西甲'
                 },
                 {
-                    link: "/z/football/23",
-                    title: "意甲"
+                    link: '/z/football/23',
+                    title: '意甲'
                 },
                 {
-                    link: "/z/football/34",
-                    title: "法甲"
+                    link: '/z/football/34',
+                    title: '法甲'
                 },
                 {
-                    link: "/z/tennis",
-                    title: "网球"
+                    link: '/z/tennis',
+                    title: '网球'
                 },
                 {
-                    link: "/z/e_sport",
-                    title: "电竞"
+                    link: '/z/e_sport',
+                    title: '电竞'
                 },
                 {
-                    link: "/z/golf",
-                    title: "高尔夫"
+                    link: '/z/golf',
+                    title: '高尔夫'
                 },
                 {
-                    link: "/z/integrated",
-                    title: "综合"
+                    link: '/z/integrated',
+                    title: '综合'
                 },
                 {
-                    link: "/z/running",
-                    title: "跑步"
+                    link: '/z/running',
+                    title: '跑步'
                 },
                 {
-                    link: "//m.sohu.com/v/",
-                    title: "视频"
+                    link: '//m.sohu.com/v/',
+                    title: '视频'
                 }
             ]
         };

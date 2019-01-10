@@ -1,0 +1,6 @@
+node_modules/
+dist/
+server/
+src/ad/
+src/components/comment/
+src/components/mescroll/
