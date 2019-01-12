@@ -28,7 +28,7 @@ const clientConfig = merge(base, {
     ],
     optimization: {
         splitChunks: {
-            chunks: "all"
+            chunks: 'all'
         },
     }
 });
@@ -61,7 +61,7 @@ if (process.env.NODE_ENV === 'production') {
                 }
             ]
         })
-    )
+    );
 }
 
 module.exports = clientConfig;

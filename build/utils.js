@@ -49,7 +49,7 @@ exports.lessLoaders = function (opt = {}) {
             }
         }
     ];
-}
+};
 
 // 生成 字体文件 loader
 exports.fontsLoader = function (opt = {}) {
