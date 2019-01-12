@@ -12,7 +12,7 @@
 ## 特性 `Feature`
 #### 字体图标自动构建
 利用 `webfonts-loader`(基于 `webfonts-generator`), 将`SVG`字体图标进行全自动化管理，新增一个字体图标只需将符合尺寸的`svg`拷贝进 `src/assets/fonts/svg` 目录下即可
-
+> 对于Web字体图标自动构建工作原理感兴趣的可以看：[Web字体图标-自动化方案](https://juejin.im/post/5c398a81e51d4551e13b88f3)
 #### 移动端响应式适配
 1. 借鉴`lib-flexible` 的方案，在页面初始化时获取设备尺寸，动态设置根节点的`font-size`, 再借助 `px2rem-loader` 后处理 `CSS` 转成`rem`, 实现响应式
 2. 引入 `postcss-loader`，解决不同版本 `CSS` 写法兼容，可以放心地使用最新`CSS`规范写法(部分特性如`flex-wrap`: `wrap` 等需自行考虑最低适配设备)
@@ -34,7 +34,8 @@
 
 #### ESlint
 1. 解决过IE8的BUG，听闻过无分号可能压缩导致的BUG，其他变成语言对分号的认同，还是把分号引入ESlint
-……
+2. 避免一些低级语法错误导致的BUG
+3. ……
 
 #### 其他
 1. 支持最新的 `Node.js`, `webpack@4`, `ES6`, `部分 ES7`
