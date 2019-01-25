@@ -12,7 +12,7 @@ const assetsPath = function (_path) {
 exports.assetsPath = assetsPath;
 
 // 处理 less 样式文件
-exports.lessLoaders = function (opt = {}) {
+exports.lessLoaders = function () {
     return [
         {
             loader: 'vue-style-loader'
@@ -52,7 +52,7 @@ exports.lessLoaders = function (opt = {}) {
 };
 
 // 生成 字体文件 loader
-exports.fontsLoader = function (opt = {}) {
+exports.fontsLoader = function () {
     return [
         'vue-style-loader',
         'css-loader',

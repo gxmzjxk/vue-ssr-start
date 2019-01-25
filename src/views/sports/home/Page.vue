@@ -17,7 +17,6 @@ export default {
     asyncData({ store }) {
         return Promise.all([
             store.dispatch('FETCH_FOCUS'),
-            store.dispatch('FETCH_RECOMMEND_LIVE'),
             store.dispatch('FETCH_TOUTIAO_NEWS'),
         ]);
     },
